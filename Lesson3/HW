@@ -1,16 +1,67 @@
 # Задача №1
 # Требуется вычислить, сколько раз встречается некоторое число X в массиве A[1..N]. Пользователь в первой строке вводит натуральное число N – количество элементов в массиве. В последующих  строках записаны N целых чисел Ai. Последняя строка содержит число X
-n = int(input("Введите размер массива: "))
 
-a = [int(input("Введите число: ")) for i in range(n)]
-x = int(input("Введите искомое число: "))
-searchingNumber = 0
+# import random
+# n = int(input('введите колличество элементов в массиве: '))
+# a = [0]*n
+
+
+# for index in range(n):
+#     a[index] = random.randint(1, 10) # варант с рандомным заполнением листа
+# print(a)
+
+# # a = [int(input("Введите число: ")) for i in range(n)] # Вариант с заполнением массива от пользоватея.
+# x = int(input("Введите искомое число: "))
+# searchingNumber = 0
+# index = 0
+# while n > index:
+#     if a[index] == x:
+#         searchingNumber = searchingNumber+1
+#         index += 1
+#     else:
+#         index += 1
+# if 1 < searchingNumber < 5 :
+#     print("число",x , "встречается в массиве:", searchingNumber, "раза")
+# else :
+#     print("число",x , "встречается в массиве:", searchingNumber, "раз")
+# ______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+# Задача №2
+# Требуется найти в массиве A[1..N] самый близкий по величине элемент к заданному числу X. Пользователь в первой строке вводит натуральное число N – количество элементов в массиве. В последующих  строках записаны N целых чисел Ai. Последняя строка содержит число X
+# *Пример:*
+# 5
+#     1 2 3 4 5
+#     6
+#     -> 5
+
+import random
+n = int(input('введите количество элементов в массиве: '))
+a = [0]*n
+
+
+for index in range(n):
+    a[index] = random.randint(3, 20)
+number1 = 0
+number2 = 0
+
 print(a)
-index = 0
-while n > index:
-    if a[index] == x:
-        searchingNumber = searchingNumber+1
-        index += 1
-    else: 
-        index += 1
-print("число", x , "встречается в массиве:", searchingNumber, "раз")
+B = sorted(set(a))
+print(B)
+searchingNumber = int(input("Введите число , от которого будет поиск ближайшего по величине элемента: "))
+
+for i in range(1, len(B)):
+    if B[i-1] >= searchingNumber:
+        print(B[i-1])
+        break
+    elif B[i-1] <= searchingNumber <= B[i]:
+        number1 = B[i] - searchingNumber
+        number2 = searchingNumber - B[i-1]          
+        if number1 >= number2:
+           print(B[i-1])
+        else:
+           print(B[i])
+        break
+    elif searchingNumber >= B[-1] :
+        print(B[-1])
+
+
