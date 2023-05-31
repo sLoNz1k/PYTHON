@@ -109,4 +109,3 @@ for key in charList:
     score = score + charScore
 
 print("Ваши очки: ", score)
-
