@@ -1,3 +1,6 @@
+import os
+os.system('clear')
+
 # Задача №1
 # Напишите программу, которая принимает на вход
 # строку, и отслеживает, сколько раз каждый символ
@@ -8,10 +11,21 @@
 # Для решения данной задачи используйте функцию
 # .split()
 
-text = input("Введите строку символов: ")
+
+text = 'a a a b c a a d c d d'
 myList = text.split()
 
 dictionary = {}
+count = str()
 
-for i in myList :
-    dictionary[i] = myList[i] 
+for letter in myList:
+    if letter in dictionary.keys() :
+        dictionary[letter] += 1
+        count += f'{letter}_{dictionary[letter]} '
+        print(count)
+    else :
+        dictionary[letter] = 0
+        count += f'{letter}'
+        print(count)
+print(text)
+print(count)
