@@ -3,16 +3,16 @@
 # два числа A и B, и возводит число А в целую степень B с
 # помощью рекурсии.
 
-# n = int(input("Введите число: "))
-# m = int(input("Введите степень: "))
+n = int(input("Введите число: "))
+m = int(input("Введите степень: "))
 
-# def factorial_recursive(n,m):
-#     if m == 1:
-#         return n
-#     else:
-#         return n *  factorial_recursive(n, m- 1)
+def factorial_recursive(n,m):
+    if m == 1:
+        return n
+    else:
+        return n *  factorial_recursive(n, m- 1)
     
-# print(factorial_recursive(n,m))
+print(factorial_recursive(n,m))
 
 # Задача №2
 # Напишите рекурсивную функцию sum(a, b),
@@ -25,9 +25,9 @@ b = int(input("Введите второе число: "))
 
 def sum(a,b) : 
     if a == 0 :
-        return a
+        return b
     else :
-        return a 
+        return sum(a-1,b+1)
     
 print(sum(a,b))
 
