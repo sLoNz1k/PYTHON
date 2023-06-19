@@ -36,15 +36,15 @@ import random
 
 # mapped_numbers = list(map(lambda x: x * 2 + 3, values))
 # print(mapped_numbers)
-# функция map - позволяет менять каждое значение в списках не создавая его копию, что улучшает производительность кода. 
+# функция map - позволяет менять каждое значение в списках не создавая его копию, что улучшает производительность кода.
 
 # size = int(input("Введите размер списка: "))
 # myList = [0]*size
 
 # for i in range(size):
-#     myList[i] = random.randint(20, 25)
+#     myList[i] = random.randrange(10,20)
 # print(myList)
-# transformation = lambda x : x - 15
+# transformation = lambda x : x
 # newList = list(map(transformation,myList))
 # print(newList)
 
@@ -52,11 +52,12 @@ import random
 #     if newList[i] == max(newList):
 #         newList[i] = min(newList)
 
-# print(newList)
-# _________________________________________________________________________________________
 
+# print(sorted(newList))
 
-# Задача №2
+# _____________________________________________________________________________________________________________________________
+
+# Задача № 2
 # Планеты вращаются вокруг звезд по эллиптическим орбитам.
 # Назовем самой далекой планетой ту, орбита которой имеет
 # самую большую площадь. Напишите функцию
@@ -76,15 +77,21 @@ import random
 # имеющий такую площадь. Гарантируется, что самая далекая
 # планета ровно одна
 
-# orbits = [(1, 3), (2.5, 10), (7, 2), (6, 6), (4, 3)]
 
-# elips = list(filter(lambda item: item[0] != item[1], orbits))
-# sorbits = tuple(map(lambda x: x[0] * x[1],elips))
-# print(sorbits)
-# print(elips[sorbits.index(max(sorbits))])
+orbits = [(1, 3), (2.5, 10), (7, 2), (6, 6), (4, 3)]
+
+result = 0
+
+elips =list(filter((lambda x: x[0] != x[1]),orbits))
+print(elips)
+newOrbits = list(map(lambda x: x[0] * x[1], elips))
+
+print(elips[newOrbits.index(max(newOrbits))])
+
+# _____________________________________________________________________________________________________________________________
 
 
-# Задача №3
+# Задaча  # 3
 # Напишите функцию same_by(characteristic, objects), которая
 # проверяет, все ли объекты имеют одинаковое значение
 # некоторой характеристики, и возвращают True, если это так.
@@ -92,18 +99,18 @@ import random
 # отличается - то False. Для пустого набора объектов, функция
 # должна возвращать True. Аргумент characteristic - это
 # функция, которая принимает объект и вычисляет его
-# характеристику.
+# характеристику
 
-# def same_by(characteristic,objects):
+
+# def same_by(func, objects):
 #     for item in objects:
-#         if not characteristic(item):
+#         if not func(item):
 #             return False
 #     return True
 
+# values = [0, 2, 6, 10]
 
-# if same_by(lambda x: x %2 == 0,values):
+# if same_by(lambda x: x % 2==0,values):
 #     print('same')
-# else:
-#     print('different')
-
-
+# else :
+#     print('differrent')
