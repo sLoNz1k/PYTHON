@@ -38,19 +38,34 @@ def find_contact(file_name):
     input('press any key')
 
 
-# def delete_contact(file_name):
-#     os.system('CLS')
-#     target = input('Input a name of contact for delete: ')
+def delete_contact(file_name):
+    # os.system('CLS')
+    target = input('Input a name of contact for delete: ')
 
-#     with open(file_name, 'w') as file:
+    with open(file_name, 'r') as file:
+        contacts = file.readlines() 
+    
+        for i in range(len(contacts)):
+            if target in contacts[i]:
+                contacts.pop(i)
+                print(contacts)
+                convert = ''.join(str(x) for x in contacts)
+                print(convert)
+                file.write(convert)
+
+                break
+
+               # print('Successfully deleted!')
+        else:
+            print('there is no contact with this name!')
+    input('press any key')
         
-
-
 
 def drawing():
     print('1 - show contacts')
     print('2 - add contact')
     print('3 - search contact')
+    print('4 - delete contact')
     print('6 - exit')
 
 def main(file_name):
@@ -65,6 +80,8 @@ def main(file_name):
             add_contact(file_name)
         elif user_choice == 3:
             find_contact(file_name)
+        elif user_choice == 4:
+            delete_contact(file_name)
         elif user_choice == 6:
             print('Have a nice day!\n')
             return
