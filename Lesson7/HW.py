@@ -55,41 +55,18 @@ import re
 # else :
 #     print('Пам парам')
 #______________________________________________________________
-# rows = int(input('rows: '))
-# columns = int(input('columns: '))
-# arr = []* rows
+# Напишите функцию print_operation_table(operation, num_rows=6, num_columns=6), которая принимает в качестве аргумента функцию,
+# вычисляющую элемент по номеру строки и столбца. Аргументы num_rows и num_columns указывают число строк и столбцов таблицы, которые должны быть распечатаны.
+# Нумерация строк и столбцов идет с единицы (подумайте, почему не с нуля). Примечание: бинарной операцией называется любая операция,
+# у которой ровно два аргумента, как, например, у операции умножения.
 
 
+rows = 6
+columns = 6
+def function (operation, rows,columns):
+    A = [[operation(i,j) for j in range(1, rows + 1)] for i in range(1, columns +1)]
+    printing(A)
 
-
-# def multiple(rows,columns,arr):
-#     for i  in range(1, rows): 
-#         for j in range(1,columns):
-#             arr[j][i] = i * j
-#             print(arr[i,j])
-
-# multiple(rows, columns, arr)
-
-# def multiple(arr):
-#     for row in range(len(arr)):
-#         for column in range(len(arr)):
-#             print(row * column, end= '\t')
-#         print()
-
-# multiple(arr)
-
-
-# multiple = int(input())
-# for row in range(1, multiple + 1):
-#     for column in range(1, multiple + 1):
-#         print(row * column, end='\t')
-#     print()
-
-
-n = 5
-m = 5 
-A = [[1 for j in range(n)] for i in range(m)]
-multiple = list(map(lambda x : x * x) ,A)
 
 def printing(arr):
     # len(A) - возвращает количество строк в матрице А
@@ -99,4 +76,4 @@ def printing(arr):
             print(arr[i][j], end=' ')
         print()
 
-printing(multiple)
+function(lambda x,y : x*y, rows,columns )
