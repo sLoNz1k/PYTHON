@@ -1,14 +1,16 @@
 import os
 import re
 
+
 def show_contacts(file_name):
     os.system('CLS')
-    with open(file_name, 'r') as file: 
+    with open(file_name, 'r') as file:
         data = file.readlines()
 
-        for contact in data :
+        for contact in data:
             print(contact, end='')
     input('\nPress any key: ')
+
 
 def add_contact(file_name):
     os.system('CLS')
@@ -21,52 +23,79 @@ def add_contact(file_name):
         file.write('\n' + res)
     input('Contact successfully add! Press any key for return')
 
+
 def find_contact(file_name):
     os.system('CLS')
     target = input('Input a name of contact for searching: ')
 
-    with open(file_name, 'r') as file: 
+    with open(file_name, 'r') as file:
         contacts = file.readlines()
 
-        for contact in contacts:                
+        for contact in contacts:
             if target in contact:
                 print(contact)
                 break
-        else :
+        else:
             print('there is no contacts with this name.')
 
     input('press any key')
 
 
 def delete_contact(file_name):
-    # os.system('CLS')
+    os.system('CLS')
     target = input('Input a name of contact for delete: ')
+    while not target.isalnum():
+        target = input('Некорректный ввод. Введите буквы или цифры: ')
 
-    with open(file_name, 'r') as file:
-        contacts = file.readlines() 
-    
+    with open(file_name, 'r+') as file:
+        contacts = file.readlines()
+
         for i in range(len(contacts)):
             if target in contacts[i]:
                 contacts.pop(i)
-                print(contacts)
-                convert = ''.join(str(x) for x in contacts)
-                print(convert)
-                file.write(convert)
+                contacts = ''.join(str(x) for x in contacts)
 
+                with open(file_name, 'w') as file:
+                    file.write(contacts)
+                print('Successfully deleted!')
                 break
-
-               # print('Successfully deleted!')
         else:
             print('there is no contact with this name!')
     input('press any key')
-        
+
+
+def edit_contact(file_name):
+    os.system('CLS')
+    target = str(input('Input a name of contact for edit: '))
+    while not target.isalnum():
+        target = input('Некорректный ввод. Введите буквы или цифры: ')
+    
+    with open(file_name, 'r+') as file:
+        contacts = file.readlines()
+
+        for i in range(len(contacts)):
+            if target in contacts[i]:
+                    contacts.pop(i)
+                    res = input('Input change for ' + target + ': ')
+                    contacts.insert(i, res + '\n')
+                    contacts = ''.join(str(x) for x in contacts)
+                    with open(file_name, 'w') as file:
+                        file.write(contacts)
+                        print('contact has successfully changed!')
+                        break
+        else: 
+            print('There is no this contact!')
+    input('press any key')
+
 
 def drawing():
     print('1 - show contacts')
     print('2 - add contact')
     print('3 - search contact')
     print('4 - delete contact')
+    print('5 - edit contact')
     print('6 - exit')
+
 
 def main(file_name):
     while True:
@@ -82,8 +111,11 @@ def main(file_name):
             find_contact(file_name)
         elif user_choice == 4:
             delete_contact(file_name)
+        elif user_choice == 5:
+            edit_contact(file_name)
         elif user_choice == 6:
             print('Have a nice day!\n')
             return
+
 
 main("test.txt")
